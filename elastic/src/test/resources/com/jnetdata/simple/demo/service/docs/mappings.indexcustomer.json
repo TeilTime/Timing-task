@@ -1,0 +1,120 @@
+{
+  "settings": {
+    "analysis": {
+      "tokenizer": {
+        "tag_tokenizer": {
+          "type": "pattern",
+          "pattern": ",|，| "
+        }
+      },
+      "analyzer": {
+        "tag_analyzer": {
+          "type": "custom",
+          "tokenizer": "tag_tokenizer"
+        }
+      }
+    }
+  },
+  "mappings": {
+    "normal": {
+      "properties": {
+        "id": {
+          "type": "long"
+        },
+        "workAge": {
+          "type": "long"
+        },
+        "age": {
+          "type": "long"
+        },
+        "name": {
+          "type": "keyword"
+        },
+        "description": {
+          "type": "text",
+          "analyzer": "ik_max_word",
+          "search_analyzer": "ik_smart",
+          "fields": {
+            "keyword": {
+              "type":"keyword",
+              "ignore_above": 256
+            },
+            "st" : {
+              "type":"text"
+            },
+            "ik1": {
+              "type":"text",
+              "analyzer": "ik_smart"
+            },
+            "hanlp1": {
+              "type":"text",
+              "analyzer": "hanlp-index",
+              "search_analyzer": "hanlp"
+            },
+            "hanlp2": {
+              "type":"text",
+              "analyzer": "hanlp"
+            },
+            "comma1": {
+              "type": "text",
+              "analyzer": "tag_analyzer"
+            }
+          }
+        },
+        "categorys": {
+          "type": "text",
+          "analyzer": "ik_max_word",
+          "search_analyzer": "ik_smart",
+          "fields": {
+            "keyword": {
+              "type":"keyword",
+              "ignore_above": 256
+            },
+            "tag": {
+              "type": "text",
+              "analyzer": "tag_analyzer"
+            },
+            "ik1": {
+              "type": "text",
+              "analyzer": "tag_analyzer",
+              "search_analyzer": "ik_smart"
+            }
+          }
+        },
+        "serviceCitys": {
+          "type": "text",
+          "analyzer": "ik_max_word",
+          "search_analyzer": "ik_smart",
+          "fields": {
+            "keyword": {
+              "type":"keyword",
+              "ignore_above": 256
+            },
+            "tag": {
+              "type": "text",
+              "analyzer": "tag_analyzer"
+            },
+            "ik1": {
+              "type": "text",
+              "analyzer": "tag_analyzer",
+              "search_analyzer": "ik_smart"
+            }
+          }
+        },
+        "address": {
+          "type": "text",
+          "fielddata": true,
+          "analyzer": "ik_max_word",
+          "search_analyzer": "ik_smart"
+        },
+        "leader": {
+          "type": "boolean"
+        },
+        "birthDate": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        }
+      }
+    }
+  }
+}

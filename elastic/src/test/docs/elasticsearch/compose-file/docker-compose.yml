@@ -1,0 +1,85 @@
+version: '2.2'
+services:
+  es-master:
+    image: bolingcavalry/elasticsearch-with-ik:6.5.0
+    container_name: es-master
+    restart: always
+    volumes:
+      - /storage/datas/elasticsearch/data:/sharedir:rw
+      - /storage/datas/elasticsearch/master/data:/usr/share/elasticsearch/data:rw
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    command: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - HANLP_ROOT=/usr/share/elasticsearch/plugins/analysis-hanlp/
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+    ports:
+      - 9201:9200
+    networks:
+      - esnet
+  es-node1:
+    image: bolingcavalry/elasticsearch-with-ik:6.5.0
+    container_name: es-node1
+    restart: always
+    volumes:
+      - /storage/datas/elasticsearch/data:/sharedir:rw
+      - /storage/datas/elasticsearch/node1/data:/usr/share/elasticsearch/data:rw
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    command: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+      - HANLP_ROOT=/usr/share/elasticsearch/plugins/analysis-hanlp/
+      - "discovery.zen.ping.unicast.hosts=es-master"
+    ports:
+      - 9202:9200
+    networks:
+      - esnet
+  es-node2:
+    image: bolingcavalry/elasticsearch-with-ik:6.5.0
+    container_name: es-node2
+    restart: always
+    volumes:
+      - /storage/datas/elasticsearch/data:/sharedir:rw
+      - /storage/datas/elasticsearch/node2/data:/usr/share/elasticsearch/data:rw
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    command: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - HANLP_ROOT=/sharedir/hanlp-data/
+      - TZ=Asia/Shanghai
+      - "discovery.zen.ping.unicast.hosts=es-master"
+    ports:
+      - 9203:9200
+    networks:
+      - esnet
+#  es-head:
+#    image: bolingcavalry/elasticsearch-head:6
+#    container_name: es-head
+#    restart: always
+#    ports:
+#     - 9101:9100
+#    networks:
+#      - esnet
+networks:
+  esnet:
+  

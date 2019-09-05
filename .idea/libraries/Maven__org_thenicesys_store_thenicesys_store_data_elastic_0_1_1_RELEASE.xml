@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.thenicesys.store:thenicesys-store-data-elastic:0.1.1.RELEASE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/org/thenicesys/store/thenicesys-store-data-elastic/0.1.1.RELEASE/thenicesys-store-data-elastic-0.1.1.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/org/thenicesys/store/thenicesys-store-data-elastic/0.1.1.RELEASE/thenicesys-store-data-elastic-0.1.1.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/org/thenicesys/store/thenicesys-store-data-elastic/0.1.1.RELEASE/thenicesys-store-data-elastic-0.1.1.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+
+    <!-- Service包(自动注入) -->
+    <context:component-scan base-package="com.jnetdata.simple.quartz" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+
+
+    <bean id="demoScheduleJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="quartzScheduleService" />
+        <property name="targetMethod" value="hello" />
+        <property name="concurrent" value="false" /><!-- 关闭任务并行执行，采用 串行执行-->
+    </bean>
+    <bean id="demoScheduleTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="demoScheduleJob"></property>
+        <!-- 定义定时表达式 http://cron.qqe2.com/ -->
+        <property name="cronExpression" value="0/10 * * * * ? "></property>
+        <property name="startDelay" value="1000" />
+    </bean>
+
+    <!-- 定义调度器 -->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="demoScheduleTrigger"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

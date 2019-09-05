@@ -1,0 +1,48 @@
+[
+  {
+    "id": "101",
+    "name": "华大天元（北京）科技股份有限公司",
+    "categorys": "云计算,大数据,IT服务,云服务",
+    "serviceCitys": "北京,深圳,厦门,香港,武汉,昆明",
+    "description": "华大天元（北京）科技股份有限公司",
+    "address": "北京市海淀区丰贤中路7号3号楼4层08室",
+    "workAge": "3",
+    "age": "20",
+    "birthDate": "2019-01-01 00:00:00",
+    "leader": "false"
+  },
+  {
+    "id": "102",
+    "name": "深圳市福瑞仕科技有限公司",
+    "categorys": "物联网,IT服务,云服务",
+    "serviceCitys": "广州,深圳,北京,上海,兰州市,西安,银川,香港",
+    "description": "深圳市福瑞仕科技有限公司",
+    "address": "深圳市龙岗区坂田华为总部办公楼",
+    "workAge": "6",
+    "age": "30",
+    "leader": "true"
+  },
+  {
+    "id": "103",
+    "name": "杭州复杂美科技有限公司",
+    "categorys": "区块链",
+    "serviceCitys": "杭州,南京,广州",
+    "description": "杭州复杂美科技有限公司",
+    "address": "浙江省杭州市西湖区文三路90号东部软件园6号楼7层",
+    "workAge": "8",
+    "age": "10",
+    "leader": "false"
+  },
+  {
+    "id": "104",
+    "name": "北京伟仕云安科技公司",
+    "categorys": "云计算,大数据",
+    "serviceCitys": "北京,上海,苏州,深圳",
+    "description": "北京伟仕云安科技公司",
+    "address": "长春桥路11号万柳亿城大厦A座6/7层",
+    "workAge": "4",
+    "age": "10",
+    "leader": "false"
+  }
+
+]
